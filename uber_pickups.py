@@ -15,7 +15,7 @@ import streamlit as st
 
 # # bUILDING BLOCK FOR JSON LOTTIE
 # import lottie
-from streamlit_lottie import st_lottie
+from streamlit-lottie import st_lottie
 import requests, time
 
 # -------------------------#
