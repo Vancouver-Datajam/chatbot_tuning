@@ -41,7 +41,7 @@ lottie_url = "https://lottie.host/89731dff-bbb7-4a88-9baf-b04089f686c3/4YDO2zKY4
 lottie_json = requests.get(lottie_url).json()
 
 # Display the parallax section
-st.components.v1.html(parallax_effect_html, height=1000, scrolling=True)
+st.components.v1.html(parallax_effect_html, height=1920, width=1080, scrolling=True)
 
 # Define the pages in the app
 PAGES = {"Uber Pickups": show_uber_pickups, "Chatbot": show_chatbot}
@@ -60,4 +60,4 @@ elif st.session_state.page in PAGES:
     PAGES[st.session_state.page]()
 
 # Display the Lottie animation at the end
-st_lottie(lottie_json, width=25, height=25)
+st_lottie(lottie_json, width=200, height=200)
