@@ -14,9 +14,10 @@ import streamlit as st
 
 
 # # bUILDING BLOCK FOR JSON LOTTIE
-# import lottie 
+# import lottie
 from streamlit_lottie import st_lottie
 import requests, time
+
 # -------------------------#
 # bUILDING BLOCK FOR JSON LOTTIE
 # url = requests.get(
@@ -24,19 +25,19 @@ import requests, time
 # # Creating a blank dictionary to store JSON file,
 # # as their structure is similar to Python Dictionary
 # url_json = dict()
-  
+
 # if url.status_code == 200:
 #     url_json = url.json()
 # else:
 #     print("Error in the URL")
-  
-  
+
+
 # st.title("Adding Lottie Animation in Streamlit WebApp")
-  
+
 # st_lottie(url_json)
 
 # -------------------------#
-# # Lottie for delaying 
+# # Lottie for delaying
 # # Load the Lottie JSON data
 # url = "https://assets2.lottiefiles.com/packages/lf20_mDnmhAgZkb.json"
 # response = requests.get(url)
@@ -116,6 +117,7 @@ custom_html2 = """
 """
 
 st.components.v1.html(custom_html2, height=200)
+
 
 @st.cache
 def load_data(nrows):
