@@ -1,4 +1,4 @@
-# Vancouver Datajam 2023 Project template 
+# Vancouver Datajam 2023 | ChatBot
 
 This repository contains a Python project template.
 
