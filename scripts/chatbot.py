@@ -1,4 +1,5 @@
 from chat_functions import *
+import streamlit as st
 
 # Prepare the documents
 doc_id = 1
@@ -28,7 +29,15 @@ input_id = 1
 conversation_dict[conversation_id] = create_chatbot(tool_dict[tool_id])
 
 # Start the conversation
-# query = # **** User input field
+"""
+# H1 Chatbot
+
+"""
+query = st.text_input('Your question here') **** User input field
 answer_dict[conversation_id] = chat_with_chatbot(query, conversation_dict[conversation_id]) 
 
-chatbot_response = answer_dict[conversation_id]['response'] # ****
+if st.button('Get results'):
+    chatbot_response = answer_dict[conversation_id]['response'] # ****
+    st.write(chatbot_response)
+else:
+    st.write('Click for results')
