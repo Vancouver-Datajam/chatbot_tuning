@@ -38,7 +38,7 @@ query = st.text_input('Your question here')
 answer_dict[conversation_id] = chat_with_chatbot(query, conversation_dict[conversation_id]) 
 
 if st.button('Get results'):
-    chatbot_response = answer_dict[conversation_id]['response'] 
+    chatbot_response = answer_dict[conversation_id]['output'] 
     st.write(chatbot_response)
 else:
     st.write('Click for results')
