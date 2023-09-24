@@ -4,7 +4,7 @@ This repository contains material to create a Chatbot which helps users identify
 
 Authors: Myckland Matthew, Silvia Hua, Michelle Yee, Jaisreet Khaira, Jenna Chang & Sunny Deng
 
-Disclaimer: Our temporary main branch is "silvia" as there are some merge issues in the main.
+Disclaimer: Our temporary main branch is "silvia" as there are some merge issues in the main. The app is still running and functional from "silvia" branch.
 
 ## RecyclePro Bot
 
