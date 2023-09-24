@@ -53,10 +53,10 @@ print(f'\nsession state: {st.session_state["langchain_messages"]}')
 for index, message in enumerate(st.session_state['langchain_messages']):
     if (message.content == ''):
         pass
-    elif index % 2 == 0:
+    elif type(message.content) == HumanMessage:
         with st.chat_message("user"):
             st.write(f'{message.content}')
-    else:
+    elif type(message.content) == SystemMessage:
         with st.chat_message("assistant"):
             st.write(f'{message.content}')
 
