@@ -19,10 +19,15 @@ Team lead: N/A
 
 Mentor: Jata MacCabe, Lisa Cao & Pratik Goswami
 
-Documentation:
+Mycland Matthew:
 
-Scripting:
+Silvia Hua:
 
-Modelling: 
+Michelle Yee: Documentation, Data Scraping & Formatting
 
-Sanity checking: 
+Jenna Chang: Data Scraping, Formatting, Langchain & Documentation
+
+Jaisreet Khaira: Data Scraping, Formatting, Langchain and Documentation
+
+Sunny Deng:
+
