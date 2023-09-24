@@ -56,7 +56,10 @@ def create_retriever(documents, site_key, vector_dict=vector_dict, text_splitter
     Parameters:
         - text_splitter (optional): a text splitter object. If None, the documents are not split. 
     """
-    embeddings_dict[site_key] = OpenAIEmbeddings()
+    embeddings_dict[site_key] = OpenAIEmbeddings(
+        openai_organization=os.environ['openai_organization'],
+        openai_api_key=os.environ['openai_api_key']
+        )
     if text_splitter is None: # object type is the same (class 'langchain.schema.document.Document') whether or not the documents are split
         texts = documents
     else:
