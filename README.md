@@ -29,5 +29,5 @@ Jenna Chang: Data Scraping, Formatting, Langchain & Documentation
 
 Jaisreet Khaira: Data Scraping, Formatting, Langchain and Documentation
 
-Sunny Deng:
+Sunny Deng: Web App
 
