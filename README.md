@@ -17,7 +17,7 @@ One way to reduce solid waste and GHGs is to recycle and properly dispose of ite
 
 Team lead: N/A
 
-Mentor: Jata MacCabe & Lisa Cao
+Mentor: Jata MacCabe, Lisa Cao & Pratik Goswami
 
 Documentation:
 
