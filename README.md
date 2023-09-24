@@ -19,9 +19,9 @@ Team lead: N/A
 
 Mentor: Jata MacCabe, Lisa Cao & Pratik Goswami
 
-Mycland Matthew:
+Mycland Matthew: Web App
 
-Silvia Hua:
+Silvia Hua: Scripting Chatbot, Prompt Engineering
 
 Michelle Yee: Documentation, Data Scraping & Formatting
 
