@@ -28,7 +28,19 @@ from langchain.prompts import MessagesPlaceholder
 from langchain.agents import AgentExecutor
 from langchain.agents.openai_functions_agent.agent_token_buffer_memory import AgentTokenBufferMemory
 
+import streamlit as st
+
+
+#/Users/sunnyd/Downloads/Archive/data
+
 # UPDATE THESE PARAMETERS AS NEEDED
+# # Get the directory of the current script
+# current_directory = os.path.dirname(os.path.abspath(__file__))
+
+# # Construct the path to the 'data' directory
+# directory = os.path.join(current_directory, '..', 'data/')
+
+
 directory='../data/' # This is the directory containing the CSV/text files.
 
 # Initialize Dictionaries
@@ -43,7 +55,7 @@ conversation_dict = dict()
 doc_dict = dict()
 queries_dict = dict()
 
-def create_documents(directory='../data/', glob='**/[!.]*', show_progress=True, loader_cls=CSVLoader):
+def create_documents(directory='../data', glob='**/[!.]*', show_progress=True, loader_cls=CSVLoader):
     loader = DirectoryLoader(
         directory, glob=glob, show_progress=show_progress,
         loader_cls=loader_cls)
@@ -87,6 +99,11 @@ def create_tools_list(retriever_dict, description_dict):
     return tools_list
 
 def create_chatbot(tools, verbose=True, streamlit=False):
+
+    os.environ['openai_organization'] = st.secrets['openai_organization']
+
+    os.environ['openai_api_key'] = st.secrets['openai_api_key']
+
 
     llm = ChatOpenAI(
         temperature = 0,
