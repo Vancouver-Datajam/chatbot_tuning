@@ -59,7 +59,8 @@ def show():
             
         answer_dict[conversation_id] = chat_with_chatbot(user_input, conversation_dict[conversation_id]) 
 
-        chatbot_response = answer_dict[conversation_id]['response']           
+        chatbot_response = answer_dict[conversation_id]['output']
+     
             #response = "Thank you for ask Question."
 
 
