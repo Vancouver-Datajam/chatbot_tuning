@@ -22,7 +22,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.memory import StreamlitChatMessageHistory # for Streamlit
 
 from langchain.agents.openai_functions_agent.base import OpenAIFunctionsAgent
-from langchain.schema.messages import SystemMessage, HumanMessage, AIMessage
+from langchain.schema.messages import SystemMessage
 from langchain.prompts import MessagesPlaceholder
 
 from langchain.agents import AgentExecutor

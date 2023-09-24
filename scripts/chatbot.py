@@ -1,5 +1,6 @@
 from chat_functions import *
 import streamlit as st
+from langchain.schema.messages import HumanMessage, AIMessage
 
 # Prepare the documents
 doc_id = 1
@@ -49,18 +50,23 @@ if 'key' not in st.session_state:
     
 if "messages" not in st.session_state:
     st.session_state.messages = []
-print(f'\nsession state: {st.session_state["langchain_messages"]}')
+# print(f'\nsession state: {st.session_state}')
+print(f'\nsession state messages: {st.session_state.messages}')
+# print(f'\nsession state: {st.session_state["langchain_messages"]}')
 for index, message in enumerate(st.session_state['langchain_messages']):
-    if (message.content == ''):
-        pass
-    elif type(message.content) == HumanMessage:
+    # if (message.content == ''):
+    #     pass
+    # elif type(message.content) == HumanMessage:
+    if type(message.content) == HumanMessage:
+    # elif index % 2 == 0:
         with st.chat_message("user"):
             st.write(f'{message.content}')
-    elif type(message.content) == SystemMessage:
+    # elif type(message.content) == SystemMessage:
+    else:
         with st.chat_message("assistant"):
             st.write(f'{message.content}')
 
-print(st.session_state.messages)
+print(f'session state messages: {st.session_state.messages}')
 # Set a default model
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo-16k"
@@ -68,6 +74,7 @@ if "openai_model" not in st.session_state:
 
 # prompt =  st.chat_input('Say something') 
 if prompt := st.chat_input("What is up?"):
+    st.session_state.messages.append({"role": "user", "content": prompt})
     answer_dict[conversation_id] = chat_with_chatbot(
         prompt, conversation_dict[conversation_id], streamlit=True
         ) 
