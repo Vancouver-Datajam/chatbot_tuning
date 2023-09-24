@@ -51,6 +51,11 @@ def create_documents(directory='../data/', glob='**/[!.]*', show_progress=True, 
     documents = loader.load()
     print(f'Number of files: {len(documents)}')
     return documents
+    
+def create_documents_from_csv(file_path='../data/Datajam_2023___Fine_Tuning_ChatBot_CSV_-_Recycle_BC_1.csv'):
+    loader = CSVLoader(file_path, encoding='utf-8')
+    documents = loader.load()
+    return documents
 
 def create_retriever(documents, site_key, vector_dict=vector_dict, text_splitter=None):
     """
