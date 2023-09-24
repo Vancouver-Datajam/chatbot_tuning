@@ -100,11 +100,6 @@ def create_tools_list(retriever_dict, description_dict):
 
 def create_chatbot(tools, verbose=True, streamlit=False):
 
-    os.environ['openai_organization'] = st.secrets['openai_organization']
-
-    os.environ['openai_api_key'] = st.secrets['openai_api_key']
-
-
     llm = ChatOpenAI(
         temperature = 0,
         openai_organization=os.environ['openai_organization'],
