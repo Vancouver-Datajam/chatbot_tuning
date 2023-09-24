@@ -3,6 +3,7 @@ import streamlit as st
 
 # Prepare the documents
 doc_id = 1
+directory = 'data'
 doc_dict[doc_id] = create_documents(directory=directory, glob='*.csv')
 retriever_dict = create_retriever(doc_dict[doc_id], 'recycle')
 description_dict['recycle'] = """
