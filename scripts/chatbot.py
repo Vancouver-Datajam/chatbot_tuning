@@ -69,17 +69,17 @@ if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo-16k"
 
 
-# prompt =  st.chat_input('Say something') 
-if prompt := st.chat_input("What is up?"):
-    answer_dict[conversation_id] = chat_with_chatbot(
-        prompt, conversation_dict[conversation_id], streamlit=True
-        ) 
-    chatbot_response = answer_dict[conversation_id]['output'] 
-    with st.chat_message("user"):
-        st.markdown(prompt)
+# # prompt =  st.chat_input('Say something') 
+# if prompt := st.chat_input("What is up?"):
+#     answer_dict[conversation_id] = chat_with_chatbot(
+#         prompt, conversation_dict[conversation_id], streamlit=True
+#         ) 
+#     chatbot_response = answer_dict[conversation_id]['output'] 
+#     with st.chat_message("user"):
+#         st.markdown(prompt)
     
-    with st.chat_message("assistant"):
-        st.markdown(chatbot_response)
+#     with st.chat_message("assistant"):
+#         st.markdown(chatbot_response)
     
 
 
