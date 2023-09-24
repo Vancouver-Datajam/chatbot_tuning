@@ -33,7 +33,7 @@ conversation_dict[conversation_id] = create_chatbot(tool_dict[tool_id])
 # H1 Chatbot
 
 """
-query = st.text_input('Your question here') **** User input field
+query = st.text_input('Your question here') 
 answer_dict[conversation_id] = chat_with_chatbot(query, conversation_dict[conversation_id]) 
 
 if st.button('Get results'):
