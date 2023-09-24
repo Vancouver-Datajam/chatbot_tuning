@@ -53,20 +53,32 @@ if "messages" not in st.session_state:
 # print(f'\nsession state: {st.session_state}')
 print(f'\nsession state messages: {st.session_state.messages}')
 # print(f'\nsession state: {st.session_state["langchain_messages"]}')
-for index, message in enumerate(st.session_state['langchain_messages']):
-    # if (message.content == ''):
-    #     pass
-    # elif type(message.content) == HumanMessage:
-    if type(message.content) == HumanMessage:
-    # elif index % 2 == 0:
+# for index, message in enumerate(st.session_state['langchain_messages']):
+#     # if (message.content == ''):
+#     #     pass
+#     # elif type(message.content) == HumanMessage:
+#     if type(message.content) == HumanMessage:
+#     # elif index % 2 == 0:
+#         with st.chat_message("user"):
+#             st.write(f'{message.content}')
+#     elif type(message.content) == SystemMessage:
+#     # else:
+#         with st.chat_message("assistant"):
+#             st.write(f'{message.content}')
+#     else:
+#         print('not system or user message')
+
+for message in st.session_state.messages:
+    if message['role'] == "user":
         with st.chat_message("user"):
-            st.write(f'{message.content}')
-    # elif type(message.content) == SystemMessage:
-    else:
+            st.write(f'{message["content"]}')
+    elif message['role'] == "assistant":
+        print(f'Assistant message: {message["content"]}')
         with st.chat_message("assistant"):
-            st.write(f'{message.content}')
+            st.write(f'{message["content"]}')
 
 print(f'session state messages: {st.session_state.messages}')
+# print(f'langchain messages: {st.session_state["langchain_messages"]}')
 # Set a default model
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo-16k"
@@ -79,6 +91,7 @@ if prompt := st.chat_input("What is up?"):
         prompt, conversation_dict[conversation_id], streamlit=True
         ) 
     chatbot_response = answer_dict[conversation_id]['output'] 
+    st.session_state.messages.append({"role": "assistant", "content": chatbot_response})
     with st.chat_message("user"):
         st.markdown(prompt)
     
