@@ -19,6 +19,7 @@ from langchain.chat_models import ChatOpenAI
 
 # Create memory 
 from langchain.memory import ConversationBufferMemory
+from langchain.memory import StreamlitChatMessageHistory # for Streamlit
 
 from langchain.agents.openai_functions_agent.base import OpenAIFunctionsAgent
 from langchain.schema.messages import SystemMessage
@@ -68,7 +69,10 @@ def create_retriever(documents, site_key, vector_dict=vector_dict, text_splitter
     Parameters:
         - text_splitter (optional): a text splitter object. If None, the documents are not split. 
     """
-    embeddings_dict[site_key] = OpenAIEmbeddings()
+    embeddings_dict[site_key] = OpenAIEmbeddings(
+        openai_organization=os.environ['openai_organization'],
+        openai_api_key=os.environ['openai_api_key']
+        )
     if text_splitter is None: # object type is the same (class 'langchain.schema.document.Document') whether or not the documents are split
         texts = documents
     else:
@@ -89,7 +93,7 @@ def create_tools_list(retriever_dict, description_dict):
         tools_list.append(tool)
     return tools_list
 
-def create_chatbot(tools, verbose=True):
+def create_chatbot(tools, verbose=True, streamlit=False):
 
     os.environ['openai_organization'] = st.secrets['openai_organization']
 
@@ -101,12 +105,11 @@ def create_chatbot(tools, verbose=True):
         openai_organization=os.environ['openai_organization'],
         openai_api_key=os.environ['openai_api_key'],
         )
-    
-
-
-
-
-    memory = AgentTokenBufferMemory(memory_key='chat_history', llm=llm)
+    if streamlit == False:
+        memory = AgentTokenBufferMemory(memory_key='chat_history', llm=llm)
+    else:
+        msgs = StreamlitChatMessageHistory()
+        memory = AgentTokenBufferMemory(memory_key='chat_history', llm=llm, chat_memory=msgs)
     system_message = SystemMessage(
         content=("""
             You are a helpful assistant who provides concise answers to residents in Metro Vancouver, Canada.
@@ -135,17 +138,24 @@ def create_chatbot(tools, verbose=True):
         'agent': agent,
         'agent_executor': agent_executor,
         'memory': memory,
-        'chat_history': []
+        'chat_history': [],
+        'msgs': msgs if streamlit == True else None
     }
     return agent_info
 
-def chat_with_chatbot(user_input, agent_info):
+def chat_with_chatbot(user_input, agent_info, streamlit=False):
 
     print(f'Chat history length: {len(agent_info["chat_history"])}')
-
+    if streamlit == False:
+        chat_history = agent_info['chat_history']
+    else: 
+        if type(agent_info['msgs'].messages) == list:
+            chat_history = agent_info['msgs'].messages
+        else:
+            chat_history = [agent_info['msgs'].messages]
     result = agent_info['agent_executor']({
         "input": user_input,
-        "chat_history": agent_info['chat_history']
+        "chat_history": chat_history
         })
     agent_info['chat_history'].append(result['chat_history'])
     
