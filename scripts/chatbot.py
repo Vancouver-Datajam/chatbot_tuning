@@ -35,7 +35,9 @@ conversation_dict[conversation_id] = create_chatbot(tool_dict[tool_id], streamli
 
 """
 query = st.text_input('Your question here') 
-answer_dict[conversation_id] = chat_with_chatbot(query, conversation_dict[conversation_id]) 
+answer_dict[conversation_id] = chat_with_chatbot(
+    query, conversation_dict[conversation_id], streamlit=True
+    ) 
 
 if st.button('Get results'):
     chatbot_response = answer_dict[conversation_id]['output'] 

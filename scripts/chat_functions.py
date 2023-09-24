@@ -121,17 +121,24 @@ def create_chatbot(tools, verbose=True, streamlit=False):
         'agent': agent,
         'agent_executor': agent_executor,
         'memory': memory,
-        'chat_history': [] if streamlit == False else msgs.messages,
+        'chat_history': [],
+        'msgs': msgs if streamlit == True else None
     }
     return agent_info
 
-def chat_with_chatbot(user_input, agent_info):
+def chat_with_chatbot(user_input, agent_info, streamlit=False):
 
     print(f'Chat history length: {len(agent_info["chat_history"])}')
-
+    if streamlit == False:
+        chat_history = agent_info['chat_history']
+    else: 
+        if type(agent_info['msgs'].messages) == list:
+            chat_history = agent_info['msgs'].messages
+        else:
+            chat_history = [agent_info['msgs'].messages]
     result = agent_info['agent_executor']({
         "input": user_input,
-        "chat_history": agent_info['chat_history']
+        "chat_history": chat_history
         })
     agent_info['chat_history'].append(result['chat_history'])
     
