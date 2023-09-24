@@ -19,6 +19,7 @@ from langchain.chat_models import ChatOpenAI
 
 # Create memory 
 from langchain.memory import ConversationBufferMemory
+from langchain.memory import StreamlitChatMessageHistory # for Streamlit
 
 from langchain.agents.openai_functions_agent.base import OpenAIFunctionsAgent
 from langchain.schema.messages import SystemMessage
@@ -80,15 +81,18 @@ def create_tools_list(retriever_dict, description_dict):
         tools_list.append(tool)
     return tools_list
 
-def create_chatbot(tools, verbose=True):
+def create_chatbot(tools, verbose=True, streamlit=False):
 
     llm = ChatOpenAI(
         temperature = 0,
         openai_organization=os.environ['openai_organization'],
         openai_api_key=os.environ['openai_api_key'],
         )
-
-    memory = AgentTokenBufferMemory(memory_key='chat_history', llm=llm)
+    if streamlit == False:
+        memory = AgentTokenBufferMemory(memory_key='chat_history', llm=llm)
+    else:
+        msgs = StreamlitChatMessageHistory(key="special_app_key")
+        memory = AgentTokenBufferMemory(memory_key='chat_history', llm=llm, chat_memory=msgs)
     system_message = SystemMessage(
         content=("""
             You are a helpful assistant who provides concise answers to residents in Metro Vancouver, Canada.
@@ -117,7 +121,7 @@ def create_chatbot(tools, verbose=True):
         'agent': agent,
         'agent_executor': agent_executor,
         'memory': memory,
-        'chat_history': []
+        'chat_history': [] if streamlit == False else msgs.messages,
     }
     return agent_info
 

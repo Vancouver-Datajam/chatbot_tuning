@@ -27,11 +27,11 @@ tool_dict[tool_id] = create_tools_list(retriever_dict, description_dict)
 conversation_id = 1
 input_id = 1
 
-conversation_dict[conversation_id] = create_chatbot(tool_dict[tool_id])
+conversation_dict[conversation_id] = create_chatbot(tool_dict[tool_id], streamlit=True)
 
 # Start the conversation
 """
-# H1 Chatbot
+# Chatbot
 
 """
 query = st.text_input('Your question here') 
