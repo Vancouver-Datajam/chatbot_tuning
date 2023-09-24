@@ -91,7 +91,7 @@ def create_chatbot(tools, verbose=True, streamlit=False):
     if streamlit == False:
         memory = AgentTokenBufferMemory(memory_key='chat_history', llm=llm)
     else:
-        msgs = StreamlitChatMessageHistory(key="special_app_key")
+        msgs = StreamlitChatMessageHistory()
         memory = AgentTokenBufferMemory(memory_key='chat_history', llm=llm, chat_memory=msgs)
     system_message = SystemMessage(
         content=("""
