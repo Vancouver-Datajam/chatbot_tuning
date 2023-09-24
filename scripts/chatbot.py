@@ -82,17 +82,6 @@ if prompt := st.chat_input("What is up?"):
         st.markdown(chatbot_response)
     
 
-# if st.button('Get results'):
-#     chatbot_response = answer_dict[conversation_id]['output'] 
-#     st.write(chatbot_response)
-# else:
-#     st.write('Click for results')
-    st.write(chatbot_response)
-else:
-    st.write('Click for results')
-
-
-
 
 # def show():
     
