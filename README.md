@@ -5,7 +5,7 @@ This repository contains material to create a Chatbot which helps users identify
 Authors: Myckland Matthew, Silvia Hua, Michelle Yee, Jaisreet Khaira, Jenna Chang & Sunny Deng
 
 
-## Project title
+## Vancouver Environmentalist ChatBot
 
 ## Project statement
 
