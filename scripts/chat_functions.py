@@ -30,17 +30,6 @@ from langchain.agents.openai_functions_agent.agent_token_buffer_memory import Ag
 
 import streamlit as st
 
-
-#/Users/sunnyd/Downloads/Archive/data
-
-# UPDATE THESE PARAMETERS AS NEEDED
-# # Get the directory of the current script
-# current_directory = os.path.dirname(os.path.abspath(__file__))
-
-# # Construct the path to the 'data' directory
-# directory = os.path.join(current_directory, '..', 'data/')
-
-
 directory='../data/' # This is the directory containing the CSV/text files.
 
 # Initialize Dictionaries
@@ -86,6 +75,8 @@ def create_retriever(documents, site_key, vector_dict=vector_dict, text_splitter
     vector_dict[site_key] = FAISS.from_documents(texts, embeddings_dict[site_key])
     retriever_dict[site_key] = vector_dict[site_key].as_retriever()
     return retriever_dict
+
+
 
 def create_tools_list(retriever_dict, description_dict):
     """

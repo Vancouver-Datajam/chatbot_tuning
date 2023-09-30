@@ -50,24 +50,7 @@ if 'key' not in st.session_state:
     
 if "messages" not in st.session_state:
     st.session_state.messages = []
-# print(f'\nsession state: {st.session_state}')
 print(f'\nsession state messages: {st.session_state.messages}')
-# print(f'\nsession state: {st.session_state["langchain_messages"]}')
-# for index, message in enumerate(st.session_state['langchain_messages']):
-#     # if (message.content == ''):
-#     #     pass
-#     # elif type(message.content) == HumanMessage:
-#     if type(message.content) == HumanMessage:
-#     # elif index % 2 == 0:
-#         with st.chat_message("user"):
-#             st.write(f'{message.content}')
-#     elif type(message.content) == SystemMessage:
-#     # else:
-#         with st.chat_message("assistant"):
-#             st.write(f'{message.content}')
-#     else:
-#         print('not system or user message')
-
 for message in st.session_state.messages:
     if message['role'] == "user":
         with st.chat_message("user"):
@@ -97,10 +80,3 @@ if prompt := st.chat_input("What is up?"):
     
     with st.chat_message("assistant"):
         st.markdown(chatbot_response)
-    
-
-# if st.button('Get results'):
-#     chatbot_response = answer_dict[conversation_id]['output'] 
-#     st.write(chatbot_response)
-# else:
-#     st.write('Click for results')
