@@ -37,9 +37,9 @@ try: # on Streamlit
         st.session_state.messages = []
     if 'streamlit' not in st.session_state:
         st.session_state.streamlit = ''
-    if 'chat_initiation' not in st.session_state:
-        st.session_state.chat_initiation = datetime.strftime(datetime.now(pytz.timezone('Canada/Pacific')), "%Y-%m-%d at %H:%M Pacific Time")
     if 'embeddings_filepath' not in st.session_state:
+        if 'chat_initiation' not in st.session_state:
+            st.session_state.chat_initiation = datetime.strftime(datetime.now(pytz.timezone('Canada/Pacific')), "%Y-%m-%d at %H:%M Pacific Time")
         st.session_state.embeddings_filepath = ''
         doc_id = 1
         directory = 'data'
