@@ -31,15 +31,15 @@ params_dict = {
 #     st.session_state['key'] = 'langchain_messages'
     
     # Prepare the documents
-    try: # on Streamlit
-        if "messages" not in st.session_state:
-            st.session_state.messages = []
-        if 'streamlit' not in st.session_state:
-            st.session_state.streamlit = ''
-        if 'embeddings_filepath' not in st.session_state:
-            st.session_state.embeddings_filepath = ''
-            if 'chat_initiation' not in st.session_state:
-                st.session_state.chat_initiation = datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")
+try: # on Streamlit
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+    if 'streamlit' not in st.session_state:
+        st.session_state.streamlit = ''
+    if 'embeddings_filepath' not in st.session_state:
+        st.session_state.embeddings_filepath = ''
+        if 'chat_initiation' not in st.session_state:
+            st.session_state.chat_initiation = datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")
         doc_id = 1
         directory = 'data'
         doc_dict[doc_id] = create_documents(directory=directory, glob='*.csv')
