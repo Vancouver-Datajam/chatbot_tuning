@@ -36,7 +36,7 @@ if 'streamlit' not in st.session_state:
     st.session_state.streamlit = ''
 if 'embeddings_filepath' not in st.session_state:
     st.session_state.embeddings_filepath = ''
-    # st.write(f'Chat session initiated at {datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")}')
+    st.write(f'Chat session initiated at {datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")}')
     # Prepare the documents
     try: # on Streamlit
         doc_id = 1
