@@ -1,5 +1,7 @@
 # Vancouver Datajam 2023 | ChatBot
 
+**See the chatbot in action [HERE](https://chatbotpy-qeuiewuj5r8h4qxfz4mnkn.streamlit.app/)!**
+
 This repository contains material to create a Chatbot which helps users identify which items can be recycled in BC, and where. This project is part of the Vancouver Datajam 2023 Hackathon.
 
 Authors: Myckland Matthew, Silvia Hua, Michelle Yee, Jaisreet Khaira, Jenna Chang & Sunny Deng
