@@ -3,6 +3,7 @@ import streamlit as st
 from langchain.schema.messages import HumanMessage, AIMessage
 from datetime import datetime
 import pytz
+st.set_page_config(page_title='RecyclePro Bot')
 
 recylebc = """
 This document provides information from the Recycle BC website or BC government 
