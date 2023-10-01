@@ -25,31 +25,42 @@ params_dict = {
         'text_splitter': None
     }
 }
+# Initialization
+if 'key' not in st.session_state:
+    st.session_state['key'] = 'langchain_messages'
+    
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+if 'streamlit' not in st.session_state:
+    st.session_state.streamlit = ''
+if 'embeddings_filepath' not in st.session_state:
+    st.session_state.embeddings_filepath = ''
 
-# Prepare the documents
-try: # on Streamlit
-    doc_id = 1
-    directory = 'data'
-    doc_dict[doc_id] = create_documents(directory=directory, glob='*.csv')
+    # Prepare the documents
+    try: # on Streamlit
+        doc_id = 1
+        directory = 'data'
+        doc_dict[doc_id] = create_documents(directory=directory, glob='*.csv')
 
-    doc_id = 2
-    doc_dict[doc_id] = create_documents(directory=directory, glob='*.txt', loader_cls=TextLoader)
-    embeddings_filepath = 'embeddings/'
-    streamlit = True
-    print('Executing on Streamlit')
-except: # on local machine
-    doc_id = 1
-    doc_dict[doc_id] = create_documents_from_csv()
-    print('Done creating doc from CSV')
+        doc_id = 2
+        doc_dict[doc_id] = create_documents(directory=directory, glob='*.txt', loader_cls=TextLoader)
+        st.session_state.embeddings_filepath = 'embeddings/'
+        st.session_state.streamlit = True
+        print('Executing on Streamlit')
+    except: # on local machine
+        doc_id = 1
+        doc_dict[doc_id] = create_documents_from_csv()
+        print('Done creating doc from CSV')
 
-    doc_id = 2
-    directory = '../data'
-    doc_dict[doc_id] = create_documents(directory=directory, glob='*.txt', loader_cls=TextLoader)
-    embeddings_filepath = '../embeddings/'
-    streamlit = False
-    print('Executing on local machine')
+        doc_id = 2
+        directory = '../data'
+        doc_dict[doc_id] = create_documents(directory=directory, glob='*.txt', loader_cls=TextLoader)
+        st.session_state.embeddings_filepath = '../embeddings/'
+        st.session_state.streamlit = False
+        print('Executing on local machine')
 
-retriever_dict, description_dict = create_retriever_and_description_dicts(params_dict, embeddings_filepath)
+
+retriever_dict, description_dict = create_retriever_and_description_dicts(params_dict, st.session_state.embeddings_filepath)
 
 # Create tools
 tool_id = 1
@@ -59,7 +70,7 @@ tool_dict[tool_id] = create_tools_list(retriever_dict, description_dict)
 conversation_id = 1
 input_id = 1
 
-conversation_dict[conversation_id] = create_chatbot(tool_dict[tool_id], streamlit=streamlit)
+conversation_dict[conversation_id] = create_chatbot(tool_dict[tool_id], streamlit=st.session_state.streamlit)
 
 # Start the conversation
 """
@@ -67,12 +78,6 @@ conversation_dict[conversation_id] = create_chatbot(tool_dict[tool_id], streamli
 
 """
 # Initialize chat history
-# Initialization
-if 'key' not in st.session_state:
-    st.session_state['key'] = 'langchain_messages'
-    
-if "messages" not in st.session_state:
-    st.session_state.messages = []
 print(f'\nsession state messages: {st.session_state.messages}')
 for message in st.session_state.messages:
     if message['role'] == "user":
@@ -94,7 +99,7 @@ if "openai_model" not in st.session_state:
 if prompt := st.chat_input("What is up?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     answer_dict[conversation_id] = chat_with_chatbot(
-        prompt, conversation_dict[conversation_id], streamlit=streamlit
+        prompt, conversation_dict[conversation_id], streamlit=st.session_state.streamlit
         ) 
     chatbot_response = answer_dict[conversation_id]['output'] 
     st.session_state.messages.append({"role": "assistant", "content": chatbot_response})
