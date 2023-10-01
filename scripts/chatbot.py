@@ -1,6 +1,7 @@
 from chat_functions import *
 import streamlit as st
 from langchain.schema.messages import HumanMessage, AIMessage
+from datetime import datetime
 
 recylebc = """
 This document provides information from the Recycle BC website or BC government 
@@ -35,7 +36,7 @@ if 'streamlit' not in st.session_state:
     st.session_state.streamlit = ''
 if 'embeddings_filepath' not in st.session_state:
     st.session_state.embeddings_filepath = ''
-
+    st.write(f'Chat session initiated at {datetime.strftime(datetime.now(), "%Y-%m-%d %H:%M:%S")}')
     # Prepare the documents
     try: # on Streamlit
         doc_id = 1
