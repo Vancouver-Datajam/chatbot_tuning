@@ -1,6 +1,5 @@
 import os
 from time import time
-import sys
 
 # documents
 from langchain.document_loaders import DirectoryLoader
@@ -87,7 +86,6 @@ def create_retriever(
     vector_dict[site_key] = FAISS.from_documents(texts, embeddings_dict[site_key])
     retriever_dict[site_key] = vector_dict[site_key].as_retriever()
     print(f'Retriever created for {site_key} in {time() - start_time} seconds')
-    sys.stdout.flush()
     return retriever_dict
     # return embeddings_dict
 
