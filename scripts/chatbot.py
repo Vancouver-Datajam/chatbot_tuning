@@ -26,8 +26,8 @@ params_dict = {
     }
 }
 # Initialization
-if 'key' not in st.session_state:
-    st.session_state['key'] = 'langchain_messages'
+# if 'key' not in st.session_state:
+#     st.session_state['key'] = 'langchain_messages'
     
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -88,8 +88,6 @@ for message in st.session_state.messages:
         with st.chat_message("assistant"):
             st.write(f'{message["content"]}')
 
-print(f'session state messages: {st.session_state.messages}')
-# print(f'langchain messages: {st.session_state["langchain_messages"]}')
 # Set a default model
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo-16k"
