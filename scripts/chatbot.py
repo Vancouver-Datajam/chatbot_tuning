@@ -61,7 +61,7 @@ if 'embeddings_filepath' not in st.session_state:
 
 
 retriever_dict, description_dict = create_retriever_and_description_dicts(params_dict, st.session_state.embeddings_filepath)
-
+sys.stdout.flush()
 # Create tools
 tool_id = 1
 tool_dict[tool_id] = create_tools_list(retriever_dict, description_dict)
