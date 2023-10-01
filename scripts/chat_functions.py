@@ -33,6 +33,12 @@ from langchain.agents import AgentExecutor
 from langchain.agents.openai_functions_agent.agent_token_buffer_memory import AgentTokenBufferMemory
 
 import streamlit as st
+import sys
+from io import StringIO
+
+# Redirect sys.stdout to capture print statements
+original_stdout = sys.stdout
+sys.stdout = StringIO()
 
 # Initialize Dictionaries
 tool_dict = dict()
