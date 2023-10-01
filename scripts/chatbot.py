@@ -2,6 +2,19 @@ from chat_functions import *
 import streamlit as st
 from langchain.schema.messages import HumanMessage, AIMessage
 
+import sys
+from io import StringIO
+
+# Redirect sys.stdout to capture print statements
+original_stdout = sys.stdout
+sys.stdout = StringIO()
+
+# Your Streamlit app code here
+
+# Restore sys.stdout to its original state
+sys.stdout = original_stdout
+print('This will be written to console')
+
 recylebc = """
 This document provides information from the Recycle BC website or BC government 
 website. It has the most specific information 
