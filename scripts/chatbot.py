@@ -49,17 +49,17 @@ try: # on Streamlit
         st.session_state.embeddings_filepath = 'embeddings/'
         st.session_state.streamlit = True
         print('Executing on Streamlit')
-    except: # on local machine
-        doc_id = 1
-        doc_dict[doc_id] = create_documents_from_csv()
-        print('Done creating doc from CSV')
+except: # on local machine
+    doc_id = 1
+    doc_dict[doc_id] = create_documents_from_csv()
+    print('Done creating doc from CSV')
 
-        doc_id = 2
-        directory = '../data'
-        doc_dict[doc_id] = create_documents(directory=directory, glob='*.txt', loader_cls=TextLoader)
-        st.session_state.embeddings_filepath = '../embeddings/'
-        st.session_state.streamlit = False
-        print('Executing on local machine')
+    doc_id = 2
+    directory = '../data'
+    doc_dict[doc_id] = create_documents(directory=directory, glob='*.txt', loader_cls=TextLoader)
+    st.session_state.embeddings_filepath = '../embeddings/'
+    st.session_state.streamlit = False
+    print('Executing on local machine')
 
 
 retriever_dict, description_dict = create_retriever_and_description_dicts(params_dict, st.session_state.embeddings_filepath)
