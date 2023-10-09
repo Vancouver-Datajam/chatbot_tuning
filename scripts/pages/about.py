@@ -14,7 +14,7 @@ Project team members:
 * [**Silvia Hua**](https://www.linkedin.com/in/silviahua/), Data Associate
 * **Jaisreet Khaira**, Student at Simon Fraser University
 * **Myckland Matthew**, Student at Simon Fraser University
-* **Michelle Yee**, Data Analyst
+* [**Michelle Yee**](https://www.linkedin.com/in/michelle-yee-analyst/), Data Analyst
 
 
 ## Project statement
