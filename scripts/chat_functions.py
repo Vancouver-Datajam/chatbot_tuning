@@ -66,6 +66,7 @@ def create_retriever(
     vector_dict=vector_dict, text_splitter=None
     ):
     """
+    Saves the embeddings to local machine. https://python.langchain.com/docs/modules/data_connection/text_embedding/caching_embeddings
     Parameters:
         - text_splitter (optional): a text splitter object. If None, the documents are not split. 
     """
