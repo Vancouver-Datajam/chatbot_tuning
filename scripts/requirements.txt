@@ -1,6 +1,6 @@
 openai==0.27.4
 requests==2.31.0
-langchain[llms]==0.0.300
+langchain==0.0.300
 streamlit==1.27.0
 tiktoken==0.5.1
 faiss-cpu==1.7.4
