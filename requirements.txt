@@ -1,3 +1,6 @@
+openai
+requests
+langchain[llms]
 altair==5.1.1
 attrs==23.1.0
 backports.zoneinfo==0.2.1

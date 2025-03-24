@@ -1,0 +1,7 @@
+openai
+requests
+langchain[llms]
+streamlit
+tiktoken
+faiss-cpu
+unstructured
